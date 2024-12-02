@@ -26,4 +26,9 @@ class HomeController extends Controller
         return view('backend.dashboard');
         // return view('home');
     }
+
+    public function datatable()
+    {
+        return view('backend.datatable');
+    }
 }
