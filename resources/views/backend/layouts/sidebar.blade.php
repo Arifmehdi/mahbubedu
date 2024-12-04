@@ -7,7 +7,10 @@
             <a href="{{ route('home') }}"><i data-feather="home"></i><span>Dashboard</span></a>
           </li>
           <li>
-            <a href="{{ route('datatable') }}"><i data-feather="database"></i><span>Mailbox</span></a>
+            <a href="{{ route('datatable') }}"><i data-feather="database"></i><span>Datatble</span></a>
+          </li>
+          <li>
+            <a href="{{ route('class.index') }}"><i data-feather="database"></i><span>Class</span></a>
           </li>
 
           <li class="header">Page Mangement</li>

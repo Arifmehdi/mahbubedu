@@ -2,16 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ClassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $classes = Classes::orderByDesc('id');
+
+            return DataTables::of($classes)
+                ->addIndexColumn()
+                ->addColumn('check', function ($row) {
+                    return '<div class="icheck-primary text-center ">
+                                <input type="checkbox" name="class_id[]" value="' . $row->id . '" class="mt-2 check1 text-dark">
+                            </div>';
+                })
+                ->addColumn('action', function ($row) {
+                    $editUrl = route('class.edit', $row->id);
+                    $deleteUrl = route('class.destroy', $row->id);
+
+                    $editButton = '<a href="' . $editUrl . '" class="btn btn-sm btn-primary edit"><i class="fas fa-edit"></i> </a>&nbsp;';
+                    $deleteButton = '<a href="' . $deleteUrl . '" class="btn btn-sm btn-danger delete"><i class="fas fa-trash"></i> </a>';
+
+                    return '<div class="btn-group">' . $editButton . $deleteButton . '</div>';
+                })
+                ->rawColumns(['check', 'action'])
+                ->make(true);
+        }
+
+        return view('backend.class.index');
     }
 
     /**
@@ -27,7 +50,17 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'class_name' => 'required',
+            'section' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->class_name,
+            'section' => $request->section,
+        ];
+        $class = Classes::create($data);
+        return response()->json(['success' => 'Class Created Successfully!']);
     }
 
     /**
@@ -43,7 +76,8 @@ class ClassController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $class = Classes::find($id);
+        return view('backend.class.edit', compact('class'));
     }
 
     /**
@@ -51,7 +85,15 @@ class ClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'class_name' => 'required',
+            'section' => 'required',
+        ]);
+        $class = Classes::find($id);
+        $class->name = $request->class_name;
+        $class->section = $request->section;
+        $class->save();
+        return response()->json('Class Updated Successfully');
     }
 
     /**
@@ -59,6 +101,8 @@ class ClassController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $class = Classes::find($id);
+        $class->delete();
+        return response()->json('Class Deleted Successfully');
     }
 }

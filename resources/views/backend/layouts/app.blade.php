@@ -6,24 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('backend') }}/main/images/logo-letter.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>MahbubEdu - Dashboard</title>
+    {{-- own js  --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.css" integrity="sha512-VSD3lcSci0foeRFRHWdYX4FaLvec89irh5+QAGc00j5AOdow2r5MFPhoPEYBUQdyarXwbzyJEO7Iko7+PnPuBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> --}}
 
-	<!-- Vendors Style-->
+    <!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend') }}/src/css/vendors_css.css">
 
 	<!-- Style-->
 	<link rel="stylesheet" href="{{ asset('backend') }}/src/css/style.css">
 	<link rel="stylesheet" href="{{ asset('backend') }}/src/css/skin_color.css">
 
+
+    @stack('css')
+    <style>
+        .table tbody tr {
+            color: black;
+        }
+    </style>
+
   </head>
 
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
 <div class="wrapper">
-	<div id="loader"></div>
+	{{-- <div id="loader"></div> --}}
 
     @include('backend.layouts.header')
 
@@ -578,6 +591,15 @@
 
 	<!-- Page Content overlay -->
 
+    {{-- own js  --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.js" integrity="sha512-MnKz2SbnWiXJ/e0lSfSzjaz9JjJXQNb2iykcZkEY2WOzgJIWVqJBFIIPidlCjak0iTH2bt2u1fHQ4pvKvBYy6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> --}}
+
+
+
+
 
 	<!-- Vendor JS -->
 	<script src="{{ asset('backend') }}/src/js/vendors.min.js"></script>
@@ -594,6 +616,23 @@
 	<script src="{{ asset('backend') }}/src/js/template.js"></script>
 	<script src="{{ asset('backend') }}/src/js/pages/dashboard.js"></script>
     <script src="{{ asset('backend') }}/src/js/pages/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+    @stack('js')
+    <script>
+        // Global Toastify function
+        function showToast(message, type = "success") {
+            let backgroundColor = type === "success" ? "#28a745" : "#dc3545"; // Green for success, red for error
+            Toastify({
+                text: message,
+                duration: 3000, // Display duration in milliseconds
+                close: true, // Enable close button
+                gravity: "top", // Position on the screen: top/bottom
+                position: "right",  // Position: left/center/right
+                backgroundColor: backgroundColor, // Success color (green)
+                stopOnFocus: true, // Prevent dismissal when hovering
+            }).showToast();
+        }
+    </script>
 
 </body>
 </html>
