@@ -11,8 +11,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $students = Student::with('class')->get(); // Eager load related class
-        return view('backend.students.index', compact('students'));
+        //
     }
 
     /**
