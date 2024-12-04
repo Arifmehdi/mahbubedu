@@ -12,6 +12,9 @@
           <li>
             <a href="{{ route('class.index') }}"><i data-feather="database"></i><span>Class</span></a>
           </li>
+          <li>
+            <a href="{{ route('students.index') }}"><i data-feather="database"></i><span>Students</span></a>
+          </li>
 
           <li class="header">Page Mangement</li>
           <li class="treeview">

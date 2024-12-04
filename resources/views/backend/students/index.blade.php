@@ -7,11 +7,11 @@
         <div class="box">
                 <div class="row align-items-center">
                     <div class="box-header with-border col-6">
-                        <h4 class="box-title">Hover Export Data Table</h4>
+                        <h4 class="box-title">Student List</h4>
                         {{-- <p class="mb-0 box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</p> --}}
                     </div>
                     <div class="col-6 text-end">
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Class</a>
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Student</a>
                     </div>
                 </div>
 
@@ -19,476 +19,30 @@
           <!-- /.box-header -->
           <div class="box-body">
               <div class="table-responsive">
-                <table id="example" class="table text-fade table-bordered table-hover display nowrap margin-top-10 w-p100">
+                {{-- <table id="example" class="table text-fade table-bordered table-hover margin-top-10 w-p100 student-table"> --}}
+                <table class="table text-fade table-bordered table-hover margin-top-10 w-p100 student-table">
                   <thead>
                       <tr class="text-dark">
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
+                          <th class="text-start">
+                            <div>
+                                <input type="checkbox" id="is_check_all" class="text-dark">
+                            </div>
+                          </th>
+                          <th class="text-start">{{ __('SL.') }}</th>
+                          <th class="text-start">{{ __('Name') }}</th>
+                          <th class="text-start">{{ __('Image') }}</th>
+                          <th class="text-start">{{ __('Email') }}</th>
+                          <th class="text-start">{{ __('Phone') }}</th>
+                          <th class="text-start">{{ __('D.O.B') }}</th>
+                          <th class="text-start">{{ __('Address') }}</th>
+                          <th class="text-start">{{ __('Class') }}</th>
+                          <th class="text-start">{{ __('Admission Date') }}</th>
+                          <th class="text-start">{{ __('Action') }}</th>
                       </tr>
                   </thead>
-                  <tbody>
-                      <tr>
-                          <td class="text-dark">Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                          <td>2011/07/25</td>
-                          <td>$170,750</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Ashton Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                          <td>66</td>
-                          <td>2009/01/12</td>
-                          <td>$86,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Cedric Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                          <td>2012/03/29</td>
-                          <td>$433,060</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Airi Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>33</td>
-                          <td>2008/11/28</td>
-                          <td>$162,700</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Brielle Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                          <td>61</td>
-                          <td>2012/12/02</td>
-                          <td>$372,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Herrod Chandler</td>
-                          <td>Sales Assistant</td>
-                          <td>San Francisco</td>
-                          <td>59</td>
-                          <td>2012/08/06</td>
-                          <td>$137,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Rhona Davidson</td>
-                          <td>Integration Specialist</td>
-                          <td>Tokyo</td>
-                          <td>55</td>
-                          <td>2010/10/14</td>
-                          <td>$327,900</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Colleen Hurst</td>
-                          <td>Javascript Developer</td>
-                          <td>San Francisco</td>
-                          <td>39</td>
-                          <td>2009/09/15</td>
-                          <td>$205,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Sonya Frost</td>
-                          <td>Software Engineer</td>
-                          <td>Edinburgh</td>
-                          <td>23</td>
-                          <td>2008/12/13</td>
-                          <td>$103,600</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jena Gaines</td>
-                          <td>Office Manager</td>
-                          <td>London</td>
-                          <td>30</td>
-                          <td>2008/12/19</td>
-                          <td>$90,560</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Quinn Flynn</td>
-                          <td>Support Lead</td>
-                          <td>Edinburgh</td>
-                          <td>22</td>
-                          <td>2013/03/03</td>
-                          <td>$342,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Charde Marshall</td>
-                          <td>Regional Director</td>
-                          <td>San Francisco</td>
-                          <td>36</td>
-                          <td>2008/10/16</td>
-                          <td>$470,600</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Haley Kennedy</td>
-                          <td>Senior Marketing Designer</td>
-                          <td>London</td>
-                          <td>43</td>
-                          <td>2012/12/18</td>
-                          <td>$313,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Tatyana Fitzpatrick</td>
-                          <td>Regional Director</td>
-                          <td>London</td>
-                          <td>19</td>
-                          <td>2010/03/17</td>
-                          <td>$385,750</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Michael Silva</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td>2012/11/27</td>
-                          <td>$198,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Paul Byrd</td>
-                          <td>Chief Financial Officer (CFO)</td>
-                          <td>New York</td>
-                          <td>64</td>
-                          <td>2010/06/09</td>
-                          <td>$725,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Gloria Little</td>
-                          <td>Systems Administrator</td>
-                          <td>New York</td>
-                          <td>59</td>
-                          <td>2009/04/10</td>
-                          <td>$237,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Bradley Greer</td>
-                          <td>Software Engineer</td>
-                          <td>London</td>
-                          <td>41</td>
-                          <td>2012/10/13</td>
-                          <td>$132,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Dai Rios</td>
-                          <td>Personnel Lead</td>
-                          <td>Edinburgh</td>
-                          <td>35</td>
-                          <td>2012/09/26</td>
-                          <td>$217,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jenette Caldwell</td>
-                          <td>Development Lead</td>
-                          <td>New York</td>
-                          <td>30</td>
-                          <td>2011/09/03</td>
-                          <td>$345,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Yuri Berry</td>
-                          <td>Chief Marketing Officer (CMO)</td>
-                          <td>New York</td>
-                          <td>40</td>
-                          <td>2009/06/25</td>
-                          <td>$675,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Caesar Vance</td>
-                          <td>Pre-Sales Support</td>
-                          <td>New York</td>
-                          <td>21</td>
-                          <td>2011/12/12</td>
-                          <td>$106,450</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Doris Wilder</td>
-                          <td>Sales Assistant</td>
-                          <td>Sidney</td>
-                          <td>23</td>
-                          <td>2010/09/20</td>
-                          <td>$85,600</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Angelica Ramos</td>
-                          <td>Chief Executive Officer (CEO)</td>
-                          <td>London</td>
-                          <td>47</td>
-                          <td>2009/10/09</td>
-                          <td>$1,200,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Gavin Joyce</td>
-                          <td>Developer</td>
-                          <td>Edinburgh</td>
-                          <td>42</td>
-                          <td>2010/12/22</td>
-                          <td>$92,575</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jennifer Chang</td>
-                          <td>Regional Director</td>
-                          <td>Singapore</td>
-                          <td>28</td>
-                          <td>2010/11/14</td>
-                          <td>$357,650</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Brenden Wagner</td>
-                          <td>Software Engineer</td>
-                          <td>San Francisco</td>
-                          <td>28</td>
-                          <td>2011/06/07</td>
-                          <td>$206,850</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Fiona Green</td>
-                          <td>Chief Operating Officer (COO)</td>
-                          <td>San Francisco</td>
-                          <td>48</td>
-                          <td>2010/03/11</td>
-                          <td>$850,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Shou Itou</td>
-                          <td>Regional Marketing</td>
-                          <td>Tokyo</td>
-                          <td>20</td>
-                          <td>2011/08/14</td>
-                          <td>$163,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Michelle House</td>
-                          <td>Integration Specialist</td>
-                          <td>Sidney</td>
-                          <td>37</td>
-                          <td>2011/06/02</td>
-                          <td>$95,400</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Suki Burks</td>
-                          <td>Developer</td>
-                          <td>London</td>
-                          <td>53</td>
-                          <td>2009/10/22</td>
-                          <td>$114,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Prescott Bartlett</td>
-                          <td>Technical Author</td>
-                          <td>London</td>
-                          <td>27</td>
-                          <td>2011/05/07</td>
-                          <td>$145,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Gavin Cortez</td>
-                          <td>Team Leader</td>
-                          <td>San Francisco</td>
-                          <td>22</td>
-                          <td>2008/10/26</td>
-                          <td>$235,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Martena Mccray</td>
-                          <td>Post-Sales support</td>
-                          <td>Edinburgh</td>
-                          <td>46</td>
-                          <td>2011/03/09</td>
-                          <td>$324,050</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Unity Butler</td>
-                          <td>Marketing Designer</td>
-                          <td>San Francisco</td>
-                          <td>47</td>
-                          <td>2009/12/09</td>
-                          <td>$85,675</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Howard Hatfield</td>
-                          <td>Office Manager</td>
-                          <td>San Francisco</td>
-                          <td>51</td>
-                          <td>2008/12/16</td>
-                          <td>$164,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Hope Fuentes</td>
-                          <td>Secretary</td>
-                          <td>San Francisco</td>
-                          <td>41</td>
-                          <td>2010/02/12</td>
-                          <td>$109,850</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Vivian Harrell</td>
-                          <td>Financial Controller</td>
-                          <td>San Francisco</td>
-                          <td>62</td>
-                          <td>2009/02/14</td>
-                          <td>$452,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Timothy Mooney</td>
-                          <td>Office Manager</td>
-                          <td>London</td>
-                          <td>37</td>
-                          <td>2008/12/11</td>
-                          <td>$136,200</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jackson Bradshaw</td>
-                          <td>Director</td>
-                          <td>New York</td>
-                          <td>65</td>
-                          <td>2008/09/26</td>
-                          <td>$645,750</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Olivia Liang</td>
-                          <td>Support Engineer</td>
-                          <td>Singapore</td>
-                          <td>64</td>
-                          <td>2011/02/03</td>
-                          <td>$234,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Bruno Nash</td>
-                          <td>Software Engineer</td>
-                          <td>London</td>
-                          <td>38</td>
-                          <td>2011/05/03</td>
-                          <td>$163,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Sakura Yamamoto</td>
-                          <td>Support Engineer</td>
-                          <td>Tokyo</td>
-                          <td>37</td>
-                          <td>2009/08/19</td>
-                          <td>$139,575</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Thor Walton</td>
-                          <td>Developer</td>
-                          <td>New York</td>
-                          <td>61</td>
-                          <td>2013/08/11</td>
-                          <td>$98,540</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Finn Camacho</td>
-                          <td>Support Engineer</td>
-                          <td>San Francisco</td>
-                          <td>47</td>
-                          <td>2009/07/07</td>
-                          <td>$87,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Serge Baldwin</td>
-                          <td>Data Coordinator</td>
-                          <td>Singapore</td>
-                          <td>64</td>
-                          <td>2012/04/09</td>
-                          <td>$138,575</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Zenaida Frank</td>
-                          <td>Software Engineer</td>
-                          <td>New York</td>
-                          <td>63</td>
-                          <td>2010/01/04</td>
-                          <td>$125,250</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Zorita Serrano</td>
-                          <td>Software Engineer</td>
-                          <td>San Francisco</td>
-                          <td>56</td>
-                          <td>2012/06/01</td>
-                          <td>$115,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jennifer Acosta</td>
-                          <td>Junior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                          <td>43</td>
-                          <td>2013/02/01</td>
-                          <td>$75,650</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Cara Stevens</td>
-                          <td>Sales Assistant</td>
-                          <td>New York</td>
-                          <td>46</td>
-                          <td>2011/12/06</td>
-                          <td>$145,600</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Hermione Butler</td>
-                          <td>Regional Director</td>
-                          <td>London</td>
-                          <td>47</td>
-                          <td>2011/03/21</td>
-                          <td>$356,250</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Lael Greer</td>
-                          <td>Systems Administrator</td>
-                          <td>London</td>
-                          <td>21</td>
-                          <td>2009/02/27</td>
-                          <td>$103,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Jonas Alexander</td>
-                          <td>Developer</td>
-                          <td>San Francisco</td>
-                          <td>30</td>
-                          <td>2010/07/14</td>
-                          <td>$86,500</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Shad Decker</td>
-                          <td>Regional Director</td>
-                          <td>Edinburgh</td>
-                          <td>51</td>
-                          <td>2008/11/13</td>
-                          <td>$183,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Michael Bruce</td>
-                          <td>Javascript Developer</td>
-                          <td>Singapore</td>
-                          <td>29</td>
-                          <td>2011/06/27</td>
-                          <td>$183,000</td>
-                      </tr>
-                      <tr>
-                          <td class="text-dark">Donna Snider</td>
-                          <td>Customer Support</td>
-                          <td>New York</td>
-                          <td>27</td>
-                          <td>2011/01/25</td>
-                          <td>$112,000</td>
-                      </tr>
-                  </tbody>
-              </table>
+                    <tbody></tbody>
+                </table>
+
               </div>
           </div>
           <!-- /.box-body -->
@@ -500,52 +54,369 @@
     <!-- /.row -->
   </section>
 
-    <!-- Popup Model Plase Here -->
+    <!-- Popup Create Model Plase Here -->
     <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">Add Class</h4>
+					<h4 class="modal-title" id="myModalLabel">Add Student</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal">
+					<form class="form-horizontal" id="addClassForm" enctype="multipart/form-data">
 						<div class="form-group">
-							<label class="col-md-12 form-label">Class Name</label>
+							<label class="col-md-12 form-label" for="student_name">Student Name <span class="text-danger">*</span></label>
 							<div class="col-md-12">
-								<input type="text" class="form-control">
+								<input type="text" name="student_name" class="form-control">
 							</div>
 						</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone <span class="text-danger">*</span></label>
+                                    <input type="text" name="phone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
 						<div class="form-group">
-							<label class="col-md-12 form-label">Email</label>
+							<label class="col-md-12 form-label" for="address">Address <span class="text-danger">*</span></label>
 							<div class="col-md-12">
-								<input type="email" class="form-control">
+                                <textarea  id="address" cols="30" rows="3" name="address" class="form-control"></textarea>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-12 form-label">Phone</label>
-							<div class="col-md-12">
-								<input type="tel" class="form-control">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-12 form-label">Address</label>
-							<div class="col-md-12">
-								<textarea class="form-control"></textarea>
-							</div>
-						</div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="dob">Date of Birth <span class="text-danger">*</span></label>
+                                    <input type="date" name="dob" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="class">Class <span class="text-danger">*</span></label>
+                                    <select name="class_id" id="class_id" class="form-control">
+                                        <option value="">Choose Class</option>
+                                        @foreach ($classes as $class => $classId)
+                                        <option value="{{ $classId }}">{{$class}}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Image Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="image">Image</label>
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Admission Date Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="admission_date">Admission Date <span class="text-danger">*</span></label>
+                                    <input type="date" id="admission_date" name="admission_date" class="form-control">
+                                </div>
+                            </div>
+                        </div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-bs-dismiss="modal">Add</button>
-					<button type="button" class="btn btn-danger float-end" data-bs-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-danger " data-bs-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-success float-end" id="createClassBtn">Submit</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
+	<!-- /Popup Create Model Plase Here -->
 
+    <!-- Popup Edit Model Plase Here -->
+    <div id="myEditModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myEditModalLabel">Edit Class</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+                <div class="modal-body" id="edit_modal_body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger " data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success float-end" id="editClassBtn">Update</button>
+                </div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /Popup Edit Model Plase Here -->
 
-	<!-- /Popup Model Plase Here -->
+    <!-- Delete Form -->
+    <form id="delete_form" action="" method="post">
+        @method('DELETE')
+        @csrf
+    </form>
 @endsection
+
+@push('js')
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function () {
+        $('.student-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('students.index') }}',
+            pageLength: 50,
+            lengthMenu: [
+                [10, 25, 50, 100, 500, 1000, -1],
+                [10, 25, 50, 100, 500, 1000, "All"]
+            ],
+            dom: 'lBfrtip', // Add buttons to the table
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'], // Export buttons
+
+            columns: [
+                { name: 'check', data: 'check', sWidth: '3%', orderable: false },
+                {
+                    data: null,
+                    name: 'index',
+                    render: function (data, type, row, meta) {
+                        return meta.row + 1;
+                    },
+                    orderable: false,
+                    searchable: false
+                },
+                { data: 'name', name: 'name' },
+                { data: 'image', name: 'image' },
+                { data: 'email', name: 'email' },
+                { data: 'phone', name: 'phone' },
+                { data: 'dob', name: 'dob' },
+                { data: 'address', name: 'address' },
+                { data: 'class', name: 'class' },
+                { data: 'admission_date', name: 'admission_date' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ]
+        });
+
+
+
+        $(document.body).on('click', '#is_check_all', function(event) {
+            var checked = event.target.checked;
+            if (true == checked) {
+                $('.check1').prop('checked', true);
+            }
+            if (false == checked) {
+                $('.check1').prop('checked', false);
+            }
+        });
+
+        $(document.body).on('click', '.check1', function(event) {
+            var allItem = $('.check1');
+
+            var array = $.map(allItem, function(el, index) {
+                return [el]
+            })
+
+            var allChecked = array.every(isSameAnswer);
+
+            function isSameAnswer(el, index, arr) {
+                if (index === 0) {
+                    return true;
+                } else {
+                    return (el.checked === arr[index - 1].checked);
+                }
+            }
+
+            if (allChecked && array[0].checked) {
+                $('#is_check_all').prop('checked', true);
+            } else {
+                $('#is_check_all').prop('checked', false);
+            }
+        });
+    });
+</script>
+
+<script>
+
+$(document).ready(function () {
+    $('#createClassBtn').on('click', function (e) {
+        e.preventDefault();
+
+        // Serialize form data
+        var formdata = $('#addClassForm').serialize();
+
+        // Make AJAX request
+        $.ajax({
+            url: "{{ route('students.store') }}", // Ensure this route exists
+            type: 'POST', // Correct method name
+            data: formdata,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            },
+            success: function (res) {
+                // Toastify({
+                //     text: res.success,
+                //     duration: 3000,
+                //     close: true,
+                //     gravity: "top",
+                //     position: "right",
+                //     backgroundColor: "#28a745",
+                //     stopOnFocus: true
+                // }).showToast();
+
+                showToast(res.success, "success");
+                $('.student-table').DataTable().draw(false);
+                $('#addClassForm')[0].reset();
+                $('#myModal').modal('hide');
+                // location.reload();
+            },
+            error: function (xhr) {
+                // if (xhr.status === 422) {
+                //     // Handle validation errors
+                //     var errors = xhr.responseJSON.errors;
+                //     var errorList = '<div class="alert alert-danger"><ul>';
+                //     $.each(errors, function (key, value) {
+                //         errorList += '<li>' + value[0] + '</li>';
+                //     });
+                //     errorList += '</ul></div>';
+                //     $('.modal-body').prepend(errorList);
+                // } else {
+                //     alert('An error occurred. Please try again.');
+                // }
+
+                if (xhr.status === 422) {
+                    // Handle validation errors
+                    var errors = xhr.responseJSON.errors;
+
+                    // Clear any previous error messages
+                    $('.form-group .error-message').remove();
+
+                    // Loop through errors and display them below the relevant input fields
+                    $.each(errors, function (key, value) {
+                        var inputField = $('[name="' + key + '"]');
+                        inputField.closest('.form-group').append('<span class="text-danger error-message">' + value[0] + '</span>');
+                    });
+                } else {
+                    showToast("An error occurred. Please try again.", "error");
+                }
+            }
+        });
+    });
+
+
+        // Edit Modal
+    $(document).on('click', '.edit', function(e) {
+        e.preventDefault();
+        $('.data_preloader').show();
+        var url = $(this).attr('href');
+
+        $.ajax({
+            url: url,
+            type: 'get',
+            success: function(data) {
+                $('#edit_modal_body').html(data);
+                $('#myEditModal').modal('show');
+                $('.data_preloader').hide();
+            },
+            error: function(err) {
+                $('.data_preloader').hide();
+                if (err.status == 0) {
+                    showToast("Net Connetion Error. Reload This Page.", "error");
+                } else {
+                    showToast("Server Error. Please contact to the support team.", "error");
+                }
+            }
+        });
+    });
+
+    $(document).on('click', '#editClassBtn',function(e) {
+        e.preventDefault();
+        $('.loading_button').show();
+        var url = $('#editClassForm').attr('action');
+        var request = $('#editClassForm').serialize();
+        $('.error').html('');
+
+        $.ajax({
+            url: url,
+            type: 'PATCH',
+            data: request,
+            success: function(data) {
+                showToast(data, "success");
+                $('#editClassForm')[0].reset();
+                $('.loading_button').hide();
+                $('.student-table').DataTable().draw(false);
+                $('#myEditModal').modal('hide');
+            },
+            error: function(error) {
+                $('.loading_button').hide();
+                showToast("An error occurred. Please try again.", error);
+            }
+        });
+    });
+
+
+    $(document).on('click', '.delete', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            $('#delete_form').attr('action', url);
+
+            $.confirm({
+                'title': 'Delete Confirmation',
+                'message': 'Are you sure?',
+                'buttons': {
+                    'Yes': {
+                        'class': 'yes btn-danger',
+                        'action': function() {
+                            // $('#delete_form').submit();
+                            $.ajax({
+                                url: url,
+                                type: 'DELETE',
+                                success: function(data) {
+                                    showToast(data, "success");
+                                    $('.loading_button').hide();
+                                    $('.student-table').DataTable().draw(false);
+                                },
+                                error: function(error) {
+                                    $('.student-table').DataTable().draw(false);
+                                    $('.loading_button').hide();
+                                    showToast("An error occurred. Please try again.", "error");
+                                }
+                            });
+                        }
+                    },
+                    'No': {
+                        'class': 'no btn-primary',
+                        'action': function() {}
+                    }
+                }
+            });
+    });
+});
+
+</script>
+<script>
+    // Set today's date as the default value for the Admission Date field
+    document.addEventListener('DOMContentLoaded', function () {
+        const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+        document.getElementById('admission_date').value = today;
+    });
+</script>
+@endpush
+

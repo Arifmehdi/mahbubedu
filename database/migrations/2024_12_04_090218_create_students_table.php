@@ -14,12 +14,6 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->text('image')->nullable();
-            $table->string('email')->unique()->nullable();
-            $table->string('phone')->nullable();
-            $table->date('dob');
-            $table->text('address')->nullable();
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
             $table->date('admission_date');
             $table->timestamps();
@@ -37,7 +31,7 @@ return new class extends Migration
         //     $table->unsignedBigInteger('class_id');
         //     $table->timestamps();
 
-        //     // define id 
+        //     // define id
         //     $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
         //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         // });
