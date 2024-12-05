@@ -183,7 +183,7 @@
         $('.student-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('students.index') }}',
+            ajax: "{{ route('students.index') }}",
             pageLength: 50,
             lengthMenu: [
                 [10, 25, 50, 100, 500, 1000, -1],
@@ -256,51 +256,94 @@
 <script>
 
 $(document).ready(function () {
+    // $('#createClassBtn').on('click', function (e) {
+    //     e.preventDefault();
+
+    //     // Serialize form data
+    //     var formdata = $('#addClassForm').serialize();
+
+    //     // Make AJAX request
+    //     $.ajax({
+    //         url: "{{ route('students.store') }}", // Ensure this route exists
+    //         type: 'POST', // Correct method name
+    //         data: formdata,
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+    //         },
+    //         success: function (res) {
+    //             // Toastify({
+    //             //     text: res.success,
+    //             //     duration: 3000,
+    //             //     close: true,
+    //             //     gravity: "top",
+    //             //     position: "right",
+    //             //     backgroundColor: "#28a745",
+    //             //     stopOnFocus: true
+    //             // }).showToast();
+
+    //             showToast(res.success, "success");
+    //             $('.student-table').DataTable().draw(false);
+    //             $('#addClassForm')[0].reset();
+    //             $('#myModal').modal('hide');
+    //             // location.reload();
+    //         },
+    //         error: function (xhr) {
+    //             // if (xhr.status === 422) {
+    //             //     // Handle validation errors
+    //             //     var errors = xhr.responseJSON.errors;
+    //             //     var errorList = '<div class="alert alert-danger"><ul>';
+    //             //     $.each(errors, function (key, value) {
+    //             //         errorList += '<li>' + value[0] + '</li>';
+    //             //     });
+    //             //     errorList += '</ul></div>';
+    //             //     $('.modal-body').prepend(errorList);
+    //             // } else {
+    //             //     alert('An error occurred. Please try again.');
+    //             // }
+
+    //             if (xhr.status === 422) {
+    //                 // Handle validation errors
+    //                 var errors = xhr.responseJSON.errors;
+
+    //                 // Clear any previous error messages
+    //                 $('.form-group .error-message').remove();
+
+    //                 // Loop through errors and display them below the relevant input fields
+    //                 $.each(errors, function (key, value) {
+    //                     var inputField = $('[name="' + key + '"]');
+    //                     inputField.closest('.form-group').append('<span class="text-danger error-message">' + value[0] + '</span>');
+    //                 });
+    //             } else {
+    //                 showToast("An error occurred. Please try again.", "error");
+    //             }
+    //         }
+    //     });
+    // });
+
+
     $('#createClassBtn').on('click', function (e) {
         e.preventDefault();
 
-        // Serialize form data
-        var formdata = $('#addClassForm').serialize();
+        // Create a FormData object
+        var formdata = new FormData($('#addClassForm')[0]); // Include the entire form, including file inputs
 
         // Make AJAX request
         $.ajax({
             url: "{{ route('students.store') }}", // Ensure this route exists
-            type: 'POST', // Correct method name
+            type: 'POST',
             data: formdata,
+            processData: false, // Required for FormData
+            contentType: false, // Prevent jQuery from setting content type
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
             },
             success: function (res) {
-                // Toastify({
-                //     text: res.success,
-                //     duration: 3000,
-                //     close: true,
-                //     gravity: "top",
-                //     position: "right",
-                //     backgroundColor: "#28a745",
-                //     stopOnFocus: true
-                // }).showToast();
-
                 showToast(res.success, "success");
                 $('.student-table').DataTable().draw(false);
                 $('#addClassForm')[0].reset();
                 $('#myModal').modal('hide');
-                // location.reload();
             },
             error: function (xhr) {
-                // if (xhr.status === 422) {
-                //     // Handle validation errors
-                //     var errors = xhr.responseJSON.errors;
-                //     var errorList = '<div class="alert alert-danger"><ul>';
-                //     $.each(errors, function (key, value) {
-                //         errorList += '<li>' + value[0] + '</li>';
-                //     });
-                //     errorList += '</ul></div>';
-                //     $('.modal-body').prepend(errorList);
-                // } else {
-                //     alert('An error occurred. Please try again.');
-                // }
-
                 if (xhr.status === 422) {
                     // Handle validation errors
                     var errors = xhr.responseJSON.errors;

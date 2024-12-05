@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Classes;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 
 class StudentController extends Controller
@@ -86,6 +89,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'student_name' => 'required|string|max:255', // Ensure it's a string with a max length
+            'image' => 'nullable|mimes:jpg,jpeg,gif,png|max:5120',
             'email' => 'required|email|unique:users,email', // Check uniqueness in the `users` table
             'phone' => 'required|unique:users,phone', // Check uniqueness in the `users` table
             'address' => 'nullable|string|max:255', // Ensure it's a string and optional
@@ -94,11 +98,27 @@ class StudentController extends Controller
             'admission_date' => 'required|date', // Ensure it's a valid date
         ]);
 
+        $user_data = new User();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $directory = public_path('uploads/students');
+
+            if (!File::exists($directory)) {
+                File::makeDirectory($directory, 0775, true);
+            }
+            $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageName = time().'_'.$originalName.'_'. '.' . $image->getClientOriginalExtension();
+            $image->move($directory, $imageName);
+
+            $user_data->image = 'backend/uploads/students/' . $imageName;
+        }
+
         $user = User::where('email', $request->email)->orwhere('phone', $request->phone)->first();
         if($user){
             $userId = $user->id;
         }else{
-            $user_data =new  User();
+            // initailze before image
             $user_data->name = $request->student_name;
             $user_data->email = $request->email;
             $user_data->phone = $request->phone;
