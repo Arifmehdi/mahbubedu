@@ -7,11 +7,11 @@
         <div class="box">
                 <div class="row align-items-center">
                     <div class="box-header with-border col-6">
-                        <h4 class="box-title">Student List</h4>
+                        <h4 class="box-title">Teacher List</h4>
                         {{-- <p class="mb-0 box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</p> --}}
                     </div>
                     <div class="col-6 text-end">
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Student</a>
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Teacher</a>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                           <th class="text-start">{{ __('D.O.B') }}</th>
                           <th class="text-start">{{ __('Address') }}</th>
                           <th class="text-start">{{ __('Class') }}</th>
-                          <th class="text-start">{{ __('Admission Date') }}</th>
+                          <th class="text-start">{{ __('Joining Date') }}</th>
                           <th class="text-start">{{ __('Action') }}</th>
                       </tr>
                   </thead>
@@ -59,15 +59,15 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">Add Student</h4>
+					<h4 class="modal-title" id="myModalLabel">Add Teacher</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<form class="form-horizontal" id="addClassForm" enctype="multipart/form-data">
 						<div class="form-group">
-							<label class="col-md-12 form-label" for="student_name">Student Name <span class="text-danger">*</span></label>
+							<label class="col-md-12 form-label" for="teacher_name">Teacher Name <span class="text-danger">*</span></label>
 							<div class="col-md-12">
-								<input type="text" name="student_name" class="form-control">
+								<input type="text" name="teacher_name" class="form-control">
 							</div>
 						</div>
                         <div class="row">
@@ -126,8 +126,8 @@
                             <!-- Admission Date Field -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="admission_date">Admission Date <span class="text-danger">*</span></label>
-                                    <input type="date" id="admission_date" name="admission_date" class="form-control">
+                                    <label class="form-label" for="joining_date">Joining Date <span class="text-danger">*</span></label>
+                                    <input type="date" id="joining_date" name="joining_date" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myEditModalLabel">Edit Student</h4>
+					<h4 class="modal-title" id="myEditModalLabel">Edit Teacher</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
                 <div class="modal-body" id="edit_modal_body"></div>
@@ -183,7 +183,7 @@
         $('.student-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('students.index') }}",
+            ajax: "{{ route('teachers.index') }}",
             pageLength: 50,
             lengthMenu: [
                 [10, 25, 50, 100, 500, 1000, -1],
@@ -210,7 +210,7 @@
                 { data: 'dob', name: 'dob' },
                 { data: 'address', name: 'address' },
                 { data: 'class', name: 'class' },
-                { data: 'admission_date', name: 'admission_date' },
+                { data: 'joining_date', name: 'joining_date' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
         });
@@ -256,71 +256,6 @@
 <script>
 
 $(document).ready(function () {
-    // $('#createClassBtn').on('click', function (e) {
-    //     e.preventDefault();
-
-    //     // Serialize form data
-    //     var formdata = $('#addClassForm').serialize();
-
-    //     // Make AJAX request
-    //     $.ajax({
-    //         url: "{{ route('students.store') }}", // Ensure this route exists
-    //         type: 'POST', // Correct method name
-    //         data: formdata,
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
-    //         },
-    //         success: function (res) {
-    //             // Toastify({
-    //             //     text: res.success,
-    //             //     duration: 3000,
-    //             //     close: true,
-    //             //     gravity: "top",
-    //             //     position: "right",
-    //             //     backgroundColor: "#28a745",
-    //             //     stopOnFocus: true
-    //             // }).showToast();
-
-    //             showToast(res.success, "success");
-    //             $('.student-table').DataTable().draw(false);
-    //             $('#addClassForm')[0].reset();
-    //             $('#myModal').modal('hide');
-    //             // location.reload();
-    //         },
-    //         error: function (xhr) {
-    //             // if (xhr.status === 422) {
-    //             //     // Handle validation errors
-    //             //     var errors = xhr.responseJSON.errors;
-    //             //     var errorList = '<div class="alert alert-danger"><ul>';
-    //             //     $.each(errors, function (key, value) {
-    //             //         errorList += '<li>' + value[0] + '</li>';
-    //             //     });
-    //             //     errorList += '</ul></div>';
-    //             //     $('.modal-body').prepend(errorList);
-    //             // } else {
-    //             //     alert('An error occurred. Please try again.');
-    //             // }
-
-    //             if (xhr.status === 422) {
-    //                 // Handle validation errors
-    //                 var errors = xhr.responseJSON.errors;
-
-    //                 // Clear any previous error messages
-    //                 $('.form-group .error-message').remove();
-
-    //                 // Loop through errors and display them below the relevant input fields
-    //                 $.each(errors, function (key, value) {
-    //                     var inputField = $('[name="' + key + '"]');
-    //                     inputField.closest('.form-group').append('<span class="text-danger error-message">' + value[0] + '</span>');
-    //                 });
-    //             } else {
-    //                 showToast("An error occurred. Please try again.", "error");
-    //             }
-    //         }
-    //     });
-    // });
-
-
     $('#createClassBtn').on('click', function (e) {
         e.preventDefault();
 
@@ -329,7 +264,7 @@ $(document).ready(function () {
 
         // Make AJAX request
         $.ajax({
-            url: "{{ route('students.store') }}", // Ensure this route exists
+            url: "{{ route('teachers.store') }}", // Ensure this route exists
             type: 'POST',
             data: formdata,
             processData: false, // Required for FormData
@@ -471,7 +406,7 @@ $(document).ready(function () {
     // Set today's date as the default value for the Admission Date field
     document.addEventListener('DOMContentLoaded', function () {
         const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-        document.getElementById('admission_date').value = today;
+        document.getElementById('joining_date').value = today;
     });
 
 </script>
