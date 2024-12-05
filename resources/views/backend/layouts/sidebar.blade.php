@@ -21,6 +21,9 @@
           <li>
             <a href="{{ route('teachers.index') }}"><i data-feather="database"></i><span>Teachers</span></a>
           </li>
+          <li>
+            <a href="{{ route('admissions.index') }}"><i data-feather="database"></i><span>Admission</span></a>
+          </li>
 
           <li class="header">Page Mangement</li>
           <li class="treeview">

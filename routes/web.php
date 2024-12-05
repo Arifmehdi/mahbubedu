@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClassController;
@@ -34,5 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('class', ClassController::class);
     Route::resource('courses', CourseController::class);
+    Route::resource('admissions', AdmissionController::class);
 });
 
