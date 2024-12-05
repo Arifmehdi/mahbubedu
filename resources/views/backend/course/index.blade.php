@@ -7,11 +7,11 @@
         <div class="box">
                 <div class="row align-items-center">
                     <div class="box-header with-border col-6">
-                        <h4 class="box-title">Class List</h4>
+                        <h4 class="box-title">Course List</h4>
                         {{-- <p class="mb-0 box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</p> --}}
                     </div>
                     <div class="col-6 text-end">
-                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Class</a>
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10  text-center">+ Add Course</a>
                     </div>
                 </div>
 
@@ -29,8 +29,10 @@
                             </div>
                           </th>
                           <th class="text-start">{{ __('SL.') }}</th>
-                          <th class="text-start">{{ __('Class Name') }}</th>
-                          <th class="text-start">{{ __('Section Name') }}</th>
+                          <th class="text-start">{{ __('Course Name') }}</th>
+                          <th class="text-start">{{ __('Year') }}</th>
+                          <th class="text-start">{{ __('Description') }}</th>
+                          <th class="text-start">{{ __('Teacher') }}</th>
                           <th class="text-start">{{ __('Action') }}</th>
                       </tr>
                   </thead>
@@ -53,24 +55,45 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">Add Class</h4>
+					<h4 class="modal-title" id="myModalLabel">Add Course</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<form class="form-horizontal" id="addClassForm">
 						<div class="form-group">
-							<label class="col-md-12 form-label" for="class_name">Class Name <span class="text-danger">*</span></label>
+							<label class="col-md-12 form-label" for="course_name">Course Name <span class="text-danger">*</span></label>
 							<div class="col-md-12">
-								<input type="text" name="class_name" class="form-control">
+								<input type="text" name="course_name" class="form-control">
 							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-12 form-label" for="year">Year <span class="text-danger">*</span></label>
+							<div class="col-md-12">
+                                <select name="year" id="year" class="form-control">
+                                    <option value="">Choose Year</option>
+                                    @for($i = 2020; $i <= 2030; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-md-12 form-label" for="description">Teacher <span class="text-danger">*</span></label>
+                            <select name="teacher_id" id="teacher_id" class="form-control">
+                                <option value="">Choose Teacher</option>
+                                @foreach ($teachers as $teachers => $teachersId)
+                                <option value="{{ $teachersId }}">{{$teachers}}</option>
+                                @endforeach
+                            </select>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-12 form-label" for="section">Section <span class="text-danger">*</span></label>
+							<label class="col-md-12 form-label" for="description">Description </label>
 							<div class="col-md-12">
-                                <input type="text" name="section" class="form-control">
+                                <textarea name="description" class="form-control" id="description"></textarea>
 							</div>
 						</div>
+
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -123,7 +146,7 @@
         $('.student-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('class.index') }}",
+            ajax: "{{ route('courses.index') }}",
             pageLength: 50,
             lengthMenu: [
                 [10, 25, 50, 100, 500, 1000, -1],
@@ -144,7 +167,9 @@
                     searchable: false
                 },
                 { data: 'name', name: 'name' },
-                { data: 'section', name: 'section' },
+                { data: 'year', name: 'year' },
+                { data: 'description', name: 'description' },
+                { data: 'teacher', name: 'teacher' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
         });
@@ -198,7 +223,7 @@ $(document).ready(function () {
 
         // Make AJAX request
         $.ajax({
-            url: "{{ route('class.store') }}", // Ensure this route exists
+            url: "{{ route('courses.store') }}", // Ensure this route exists
             type: 'POST', // Correct method name
             data: formdata,
             headers: {

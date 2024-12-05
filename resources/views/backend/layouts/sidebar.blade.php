@@ -13,6 +13,9 @@
             <a href="{{ route('class.index') }}"><i data-feather="database"></i><span>Class</span></a>
           </li>
           <li>
+            <a href="{{ route('courses.index') }}"><i data-feather="database"></i><span>Course</span></a>
+          </li>
+          <li>
             <a href="{{ route('students.index') }}"><i data-feather="database"></i><span>Students</span></a>
           </li>
           <li>
