@@ -123,7 +123,7 @@
         $('.student-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('class.index') }}',
+            ajax: "{{ route('class.index') }}",
             pageLength: 50,
             lengthMenu: [
                 [10, 25, 50, 100, 500, 1000, -1],

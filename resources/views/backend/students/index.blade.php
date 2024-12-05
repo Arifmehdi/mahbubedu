@@ -325,7 +325,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         // Create a FormData object
-        var formdata = new FormData($('#addClassForm')[0]); // Include the entire form, including file inputs
+        var formdata = new FormData($('#addClassForm')[0]);
 
         // Make AJAX request
         $.ajax({
@@ -379,6 +379,7 @@ $(document).ready(function () {
                 $('.data_preloader').hide();
             },
             error: function(err) {
+   
                 $('.data_preloader').hide();
                 if (err.status == 0) {
                     showToast("Net Connetion Error. Reload This Page.", "error");
@@ -393,13 +394,25 @@ $(document).ready(function () {
         e.preventDefault();
         $('.loading_button').show();
         var url = $('#editClassForm').attr('action');
-        var request = $('#editClassForm').serialize();
-        $('.error').html('');
 
+        // var formdata = $('#editClassForm').serialize();
+        var formdata = new FormData($('#editClassForm')[0]);
+
+        // // Log form data to console
+        // for (var pair of formdata.entries()) {
+        //     console.log(pair[0] + ': ' + pair[1]);
+        // }
+
+        $('.error').html('');
         $.ajax({
             url: url,
-            type: 'PATCH',
-            data: request,
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+            },
             success: function(data) {
                 showToast(data, "success");
                 $('#editClassForm')[0].reset();
@@ -460,6 +473,7 @@ $(document).ready(function () {
         const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
         document.getElementById('admission_date').value = today;
     });
+
 </script>
 @endpush
 
