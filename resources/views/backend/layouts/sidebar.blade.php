@@ -116,6 +116,17 @@
             </ul>
           </li>
         </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li>
+                <form action="{{ route('logout') }}" method="POST" id="logoutForm">
+                    @csrf
+                    <button type="submit" style="background: none; border: none; padding: 0;">
+                        <i data-feather="database"></i>&nbsp;<span>Logout</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+        
 
         <div class="sidebar-widgets">
             <div class="mx-25 mb-30 pb-20 side-bx bg-primary-light rounded20">
