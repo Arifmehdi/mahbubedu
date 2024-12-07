@@ -32,28 +32,18 @@
           <li class="treeview">
             <a href="#">
               <i data-feather="edit"></i>
-              <span>Features</span>
+              <span>Report</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview">
-                  <a href="#">
-                      <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card
-                      <span class="pull-right-container">
-                          <i class="fa fa-angle-right pull-right"></i>
-                      </span>
+              <li>
+                  <a href="{{ route('report.summary') }}">
+                      <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Summary
                   </a>
-                  <ul class="treeview-menu">
-                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>User Card</a></li>
-                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Advanced Card</a></li>
-                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Basic Card</a></li>
-                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Color</a></li>
-                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Group</a></li>
-                  </ul>
               </li>
-              <li class="treeview">
+              {{-- <li class="treeview">
                   <a href="#">
                       <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>BS UI
                       <span class="pull-right-container">
@@ -124,7 +114,7 @@
                       <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Nestable</a></li>
                       <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Draggable Portlets</a></li>
                   </ul>
-              </li>
+              </li> --}}
             </ul>
           </li>
         </ul>

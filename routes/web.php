@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -39,5 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::post('course/fee', [CourseController::class,'course_fee'])->name('course.cus.fee');
     Route::resource('admissions', AdmissionController::class);
+    Route::get('report/summary', [ReportController::class,'report_summary'])->name('report.summary');
 });
 
