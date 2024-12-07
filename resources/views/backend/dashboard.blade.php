@@ -19,7 +19,7 @@
                                             </div>
                                             <div>
                                                 <h5 class="mb-0">Students</h5>
-                                                <p class="mb-0 text-white-70">75,000+</p>
+                                                <p class="mb-0 text-white-70">{{$students}}+</p>
                                             </div>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@
                                             </div>
                                             <div>
                                                 <h5 class="mb-0">Expert Mentors</h5>
-                                                <p class="mb-0 text-white-70">200+</p>
+                                                <p class="mb-0 text-white-70">{{$teachers}}+</p>
                                             </div>
                                         </div>
                                     </div>
@@ -45,28 +45,28 @@
         <div class="col-xl-3 col-12">
             <div class="box bg-transparent no-shadow">
                 <div class="box-body p-xl-0 text-center">
-                    <h3 class="px-30 mb-20">Have More<br>knoledge to share?</h3>
-                    <a href="course.html" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Create New Course</a>
+                    <h3 class="px-30 mb-20">Have More<br>to know?</h3>
+                    <a href="{{ route('courses.index') }}" class="waves-effect waves-light w-p100 btn btn-primary"><i class="fa fa-plus me-15"></i> Create New Course</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <a class="box box-link-shadow text-center pull-up" href="javascript:void(0)">
                         <div class="box-body py-5 bg-primary-light px-5">
-                            <p class="fw-500 text-primary text-overflow">Courses in Progress</p>
+                            <p class="fw-500 text-primary text-overflow">Paid Amount</p>
                         </div>
                         <div class="box-body p-10">
-                            <h1 class="countnm fs-40 m-0">5</h1>
+                            <h1 class="countnm fs-40 m-0">{{$totalPaidAmount}}</h1>
                         </div>
                     </a>
                 </div>
                 <div class="col-6">
                     <a class="box box-link-shadow text-center pull-up" href="javascript:void(0)">
                         <div class="box-body py-5 bg-primary-light px-5">
-                            <p class="fw-500 text-primary text-overflow">Forum Discussion</p>
+                            <p class="fw-500 text-primary text-overflow">Due Amount</p>
                         </div>
                         <div class="box-body p-10">
-                            <h1 class="countnm fs-40 m-0">25</h1>
+                            <h1 class="countnm fs-40 m-0">{{$totalDueAmount}}</h1>
                         </div>
                     </a>
                 </div>
