@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->decimal('amount', 10, 2);
             $table->enum('payment_type', ['admission', 'course_fee', 'other']);
             $table->date('payment_date');
-            $table->string('reference_number')->unique();
+            $table->string('reference_number')->nullable();
+            $table->text('details');
             $table->timestamps();
         });
     }

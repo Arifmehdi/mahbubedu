@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdmissionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('class', ClassController::class);
     Route::resource('courses', CourseController::class);
+    Route::resource('payments', PaymentController::class);
     Route::post('course/fee', [CourseController::class,'course_fee'])->name('course.cus.fee');
     Route::resource('admissions', AdmissionController::class);
 });
