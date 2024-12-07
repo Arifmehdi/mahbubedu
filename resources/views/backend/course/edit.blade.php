@@ -17,6 +17,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-12 form-label" for="course_fee">Course Fees <span class="text-danger">*</span></label>
+        <div class="col-md-12">
+            <input type="number" name="course_fee" class="form-control" value="{{ $course->course_fee}}">
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-md-12 form-label" for="description">Teacher <span class="text-danger">*</span></label>
         <select name="teacher_id" id="teacher_id" class="form-control">
             <option value="">Choose Teacher</option>
@@ -29,7 +35,7 @@
     <div class="form-group">
         <label class="col-md-12 form-label" for="description">Description </label>
         <div class="col-md-12">
-            <textarea name="description" class="form-control" id="description"></textarea>
+            <textarea name="description" class="form-control" id="description">{{ $course->description}}</textarea>
         </div>
     </div>
 

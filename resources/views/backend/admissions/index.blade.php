@@ -31,7 +31,9 @@
                           <th class="text-start">{{ __('SL.') }}</th>
                           <th class="text-start">{{ __('Student Name') }}</th>
                           <th class="text-start">{{ __('Class Name') }}</th>
+                          <th class="text-start">{{ __('Admission Fee') }}</th>
                           <th class="text-start">{{ __('Admission Date') }}</th>
+                          <th class="text-start">{{ __('Course Fee') }}</th>
                           <th class="text-start">{{ __('Status') }}</th>
                           <th class="text-start">{{ __('Action') }}</th>
                       </tr>
@@ -58,8 +60,30 @@
 					<h4 class="modal-title" id="myModalLabel">Add Admission</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
+
 				<div class="modal-body">
+                    <div class="p-2">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <!-- Left Section: Admission Fee -->
+                                    <td style="border: 1px solid black; padding: 10px; text-align: left; width: 50%;">
+                                        <strong>Admission Fee:</strong>
+                                        <input type="text" value="500" style="margin-left: 10px; width: 80px;" id="admission_fee_amount">
+                                    </td>
+
+                                    <!-- Right Section: Course Fee -->
+                                    <td style="border: 1px solid black; padding: 10px; text-align: right; width: 50%;">
+                                        <strong>Course Fee:</strong>
+                                        <input type="text" value="0" style="margin-left: 10px; width: 80px;" id="course_fee_amount">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 					<form class="form-horizontal" id="addClassForm">
+                        <input type="hidden" value="500" name="admission_fee_input">
+                        <input type="hidden" value="0" name="course_fee_input" id="course_fee_input">
 						<div class="form-group">
 							<label class="col-md-12 form-label" for="student_id">Student<span class="text-danger">*</span></label>
 							<div class="col-md-12">
@@ -183,7 +207,9 @@
                 },
                 { data: 'student', name: 'student' },
                 { data: 'class', name: 'class' },
+                { data: 'admission_fee', name: 'admission_fee' },
                 { data: 'admission', name: 'admission' },
+                { data: 'course', name: 'course' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
@@ -381,6 +407,41 @@ $(document).ready(function () {
                     }
                 }
             });
+    });
+
+    $('#course_id').on('change', function(e){
+        var course_fee = $(this).val();
+        $.ajax({
+            url : "{{ route('course.cus.fee') }}",
+            type: 'post',
+            data: {course_fee},
+            success: function(res){
+                $('#course_fee_amount').val(res)
+                $('#course_fee_input').val(res)
+                console.log(res)
+            },
+            error: function(xhs){
+                console.log(xhs)
+            },
+
+        });
+    });
+    $(document).on('change', '#edit_course_id',function(e){
+        var course_fee = $(this).val();
+        $.ajax({
+            url : "{{ route('course.cus.fee') }}",
+            type: 'post',
+            data: {course_fee},
+            success: function(res){
+                $('#edit_course_fee_amount').val(res)
+                $('#edit_course_fee_input').val(res)
+                console.log(res)
+            },
+            error: function(xhs){
+                console.log(xhs)
+            },
+
+        });
     });
 });
 

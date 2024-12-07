@@ -20,4 +20,8 @@ class Admission extends Model
     {
         return $this->belongsTo(Classes::class);
     }
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

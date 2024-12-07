@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->decimal('course_fee', 10, 2)->default(0)->comment('Fee for course');
             $table->string('year')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('teacher_id')->nullable()->constrained('users')->onDelete('set null');

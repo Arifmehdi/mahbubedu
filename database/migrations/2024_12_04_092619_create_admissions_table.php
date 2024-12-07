@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
             $table->date('admission_date');
+            $table->decimal('admission_fee', 10, 2)->default(0)->comment('Fee for admission');
             $table->enum('status', ['pending', 'confirmed', 'rejected'])->default('pending');
             $table->timestamps();
         });

@@ -13,13 +13,13 @@
             <a href="{{ route('class.index') }}"><i data-feather="database"></i><span>Class</span></a>
           </li>
           <li>
-            <a href="{{ route('courses.index') }}"><i data-feather="database"></i><span>Course</span></a>
+            <a href="{{ route('teachers.index') }}"><i data-feather="database"></i><span>Teachers</span></a>
           </li>
           <li>
             <a href="{{ route('students.index') }}"><i data-feather="database"></i><span>Students</span></a>
           </li>
           <li>
-            <a href="{{ route('teachers.index') }}"><i data-feather="database"></i><span>Teachers</span></a>
+            <a href="{{ route('courses.index') }}"><i data-feather="database"></i><span>Course</span></a>
           </li>
           <li>
             <a href="{{ route('admissions.index') }}"><i data-feather="database"></i><span>Admission</span></a>
@@ -135,7 +135,7 @@
                 </form>
             </li>
         </ul>
-        
+
 
         <div class="sidebar-widgets">
             <div class="mx-25 mb-30 pb-20 side-bx bg-primary-light rounded20">

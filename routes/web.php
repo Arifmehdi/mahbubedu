@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('teachers', TeacherController::class);
     Route::resource('class', ClassController::class);
     Route::resource('courses', CourseController::class);
+    Route::post('course/fee', [CourseController::class,'course_fee'])->name('course.cus.fee');
     Route::resource('admissions', AdmissionController::class);
 });
 

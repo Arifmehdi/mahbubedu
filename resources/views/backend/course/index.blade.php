@@ -31,6 +31,7 @@
                           <th class="text-start">{{ __('SL.') }}</th>
                           <th class="text-start">{{ __('Course Name') }}</th>
                           <th class="text-start">{{ __('Year') }}</th>
+                          <th class="text-start">{{ __('Course Fee') }}</th>
                           <th class="text-start">{{ __('Description') }}</th>
                           <th class="text-start">{{ __('Teacher') }}</th>
                           <th class="text-start">{{ __('Action') }}</th>
@@ -67,6 +68,12 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-md-12 form-label" for="course_fee">Course Fees <span class="text-danger">*</span></label>
+							<div class="col-md-12">
+								<input type="number" name="course_fee" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-md-12 form-label" for="year">Year <span class="text-danger">*</span></label>
 							<div class="col-md-12">
                                 <select name="year" id="year" class="form-control">
@@ -77,6 +84,7 @@
                                 </select>
 							</div>
 						</div>
+
                         <div class="form-group">
 							<label class="col-md-12 form-label" for="description">Teacher <span class="text-danger">*</span></label>
                             <select name="teacher_id" id="teacher_id" class="form-control">
@@ -168,6 +176,7 @@
                 },
                 { data: 'name', name: 'name' },
                 { data: 'year', name: 'year' },
+                { data: 'course_fee', name: 'course_fee' },
                 { data: 'description', name: 'description' },
                 { data: 'teacher', name: 'teacher' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }

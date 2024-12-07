@@ -61,6 +61,7 @@ class CourseController extends Controller
 
         $request->validate([
             'course_name' => 'required',
+            'course_fee' => 'required|numeric|min:0',
             'year' => 'required',
             'teacher_id' => 'required',
             'description' => 'nullable',
@@ -68,6 +69,7 @@ class CourseController extends Controller
 
         $data = [
             'name' => $request->course_name,
+            'course_fee' => $request->course_fee,
             'year' => $request->year,
             'description' => $request->description,
             'teacher_id' => $request->teacher_id,
@@ -91,6 +93,7 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $teachers = User::where('role','teacher')->pluck('id','name');
+
         return view('backend.course.edit', compact('course','teachers'));
     }
 
@@ -102,6 +105,7 @@ class CourseController extends Controller
         $request->validate([
             'course_name' => 'required',
             'year' => 'required',
+            'course_fee' => 'required|numeric|min:0',
             'teacher_id' => 'required',
             'description' => 'nullable',
         ]);
@@ -109,6 +113,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->name = $request->course_name;
         $course->year = $request->year;
+        $course->course_fee = $request->course_fee;
         $course->teacher_id = $request->teacher_id;
         $course->description = $request->description;
         $course->save();
@@ -123,5 +128,13 @@ class CourseController extends Controller
         $course = Course::find($id);
         $course->delete();
         return response()->json('Course Deleted Successfully');
+    }
+
+
+    public function course_fee(Request $request)
+    {
+        $course = Course::find($request->course_fee);
+        $course_fee = $course->course_fee;
+        return $course_fee;
     }
 }
